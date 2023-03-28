@@ -2,11 +2,14 @@ from flask import Flask
 import requests
 API_TOKEN =  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWJhMWI0MzFhNjY2ZjQ5Mzg4OGNhYzRkYTc4MDQ2MyIsInN1YiI6IjY0MWFmOWQxOTVjMGFmMDBmNzA3YzE0MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DXd5aHVZNydzEVc-wrA_XlWgl2FMZ1ZvdyMqYeXEeQY"
 
-def get_movies(how_many,list_type):
+def get_movies(how_many, list_type):
     data = get_movies_list(list_type)
     return data["results"][:how_many]
 
 def get_movies_list(list_type):
+    valid_list_types = ['now_playing', 'popular', 'top_rated', 'upcoming']
+    if list_type not in valid_list_types:
+        list_type = 'popular'
     endpoint = f"https://api.themoviedb.org/3/movie/{list_type}"
     headers = {
         "Authorization": f"Bearer {API_TOKEN}"

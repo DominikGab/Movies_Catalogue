@@ -12,6 +12,8 @@
         <a href="{{ url_for('homepage', list_type="popular") }}" class="btn btn-outline-info">Popular</a>
         <a href="{{ url_for('homepage', list_type="top_rated") }}" class="btn btn-outline-info">Top Rated</a>
         <a href="{{ url_for('homepage', list_type="now_playing") }}" class="btn btn-outline-info">Now Playing</a>
+        <a href="{{ url_for('homepage', list_type="upcoming") }}" class="btn btn-outline-info">Upcoming</a>
+        <a href="{{ url_for('homepage', list_type="error") }}" class="btn btn-outline-info">error</a>
     </div>
 
    {% for movie in movies %}
